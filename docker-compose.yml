@@ -5,6 +5,7 @@ logstash:
   ports:
     - 5141:5141/udp
   net: host
+  restart: always
   command: logstash -f /tmp/logstash.conf
 
 kibana:
@@ -14,3 +15,4 @@ kibana:
   environment:
     - ELASTICSEARCH_URL=http://localhost:9200
   net: host
+  restart: always
