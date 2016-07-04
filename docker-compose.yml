@@ -1,0 +1,16 @@
+logstash:
+  image: logstash:2.3.3
+  links:
+    - elasticsearch:elasticsearch
+  volumes:
+    - ./logstash/logstash.conf:/tmp/logstash.conf
+  ports:
+    - 5141:5141/udp
+  command: logstash -f /tmp/logstash.conf
+
+kibana:
+  image: kibana:4.5.1
+  links:
+    - elasticsearch:elasticsearch
+  ports:
+    - 5601:5601
